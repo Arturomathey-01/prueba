@@ -1,0 +1,2345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIA - Instituto Tecnológico John Pascal</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            border: 2px solid #e5e7eb;
+        }
+
+        #main-container {
+            display: block;
+        }
+
+        .title {
+            font-size: 4em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-content {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border: 4px solid #1e3a8a;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .logo-text {
+            font-size: 9px;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-align: center;
+            line-height: 1.2;
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .logo-motto {
+            font-size: 7px;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-align: center;
+            line-height: 1.2;
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+        }
+
+
+
+        .atom-symbol {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            margin: 12px 0;
+        }
+
+        .atom-center {
+            width: 14px;
+            height: 14px;
+            background: #1e3a8a;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .electron-orbit {
+            position: absolute;
+            border: 2px solid #1e3a8a;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .orbit1 {
+            width: 35px;
+            height: 18px;
+        }
+
+        .orbit2 {
+            width: 35px;
+            height: 18px;
+            transform: translate(-50%, -50%) rotate(60deg);
+        }
+
+        .orbit3 {
+            width: 35px;
+            height: 18px;
+            transform: translate(-50%, -50%) rotate(-60deg);
+        }
+
+        .atom-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 42px;
+            height: 42px;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 50%;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        .book-icon {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 28px;
+            height: 18px;
+            border: 2px solid #1e3a8a;
+            border-radius: 3px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .book-icon::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 10px;
+            background: #1e3a8a;
+        }
+
+        .green-landscape {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 15px;
+            background: #059669;
+            border-radius: 50px 50px 0 0;
+        }
+
+        .year {
+            position: absolute;
+            bottom: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            font-weight: bold;
+            color: #1e3a8a;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 40px;
+        }
+
+        .roles-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .role-button {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 30px 20px;
+            min-width: 180px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #374151;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .role-button:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .role-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+        }
+
+        .role-title {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .modal-roles {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .modal-role-button {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px 15px;
+            min-width: 150px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-role-button:hover {
+            border-color: #667eea;
+            background: #eff6ff;
+            transform: translateY(-3px);
+        }
+
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #6b7280;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        /* Login Screen styles */
+        .login-screen {
+            display: none;
+            position: fixed;
+            z-index: 1100;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #f5f5dc 0%, #e6e6d4 100%);
+            overflow: auto;
+        }
+
+        .login-header {
+            background: #5B4FBF;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .login-header-logo {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 70px);
+            padding: 20px;
+        }
+
+        .login-logo {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-logo-content {
+            width: 180px;
+            height: 180px;
+            border: 4px solid #1e3a8a;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .login-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .login-title {
+            font-size: 28px;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .login-button {
+            background: #22d3ee;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .login-button:hover {
+            background: #0891b2;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #4a5568;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5em;
+            }
+            
+            .roles-container,
+            .modal-roles {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .role-button,
+            .modal-role-button {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .modal-content {
+                width: 95vw;
+                padding: 20px;
+                max-height: 95vh;
+            }
+
+            .login-form {
+                width: 95%;
+                padding: 30px 20px;
+            }
+
+            .login-header {
+                font-size: 16px;
+                padding: 12px 15px;
+            }
+
+            .login-logo {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 30px;
+            }
+
+            .login-logo-content {
+                width: 130px;
+                height: 130px;
+            }
+        }
+
+        /* Panel Estudiante CSS */
+        #panel-estudiante { 
+            display: none; 
+            background: #fff; 
+            color: #222; 
+            min-height: 100vh; 
+            width: 100vw;
+            position: fixed;
+            top: 0; left: 0;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        #panel-estudiante header {
+            background-color: #0d47a1;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 3px 10px;
+            position: relative;
+        }
+        #panel-estudiante .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #panel-estudiante .logo img { height: 30px; }
+        #panel-estudiante .title {
+            font-size: 16px;
+            flex-grow: 1;
+            text-align: center;
+        }
+        #panel-estudiante .menu-btn {
+            font-size: 20px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+        #panel-estudiante .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+        }
+        #panel-estudiante .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        #panel-estudiante .dropdown, #panel-estudiante .avatar-dropdown {
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 10px 0;
+            display: none;
+            z-index: 10;
+        }
+        #panel-estudiante .dropdown a, #panel-estudiante .avatar-dropdown a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #333;
+            white-space: nowrap;
+        }
+        #panel-estudiante .dropdown a:hover, #panel-estudiante .avatar-dropdown a:hover {
+            background-color: #f1f1f1;
+        }
+        #panel-estudiante .dropdown { left: 10px; top: 60px; }
+        #panel-estudiante .avatar-dropdown { right: 20px; top: 60px; }
+        #panel-estudiante .content {
+            padding: 30px 20px;
+        }
+        #panel-estudiante table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 30px auto;
+            max-width: 1000px;
+        }
+        #panel-estudiante th, #panel-estudiante td {
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            text-align: center;
+        }
+        #panel-estudiante th {
+            background-color: #000;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        #panel-estudiante td { font-size: 14px; }
+        #panel-estudiante .welcome {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #0d47a1;
+            text-align: right;
+        }
+        @media (max-width: 768px) {
+            #panel-estudiante .title { font-size: 16px; }
+            #panel-estudiante th, #panel-estudiante td { font-size: 12px; }
+        }
+        .error-message {
+            color: #dc2626;
+            margin-bottom: 15px;
+            font-size: 14px;
+            background: #fee2e2;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #fecaca;
+        }
+        #panel-estudiante header {
+            background-color: #0d47a1;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: relative;
+        }
+        #panel-estudiante .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #panel-estudiante .logo img { height: 40px; }
+        #panel-estudiante .title {
+            font-size: 24px;
+            font-weight: bold;
+            flex-grow: 1;
+            text-align: center;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.9);
+            letter-spacing: 1px;
+        }
+        #panel-estudiante .menu-btn {
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+        #panel-estudiante .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+        }
+        #panel-estudiante .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        #panel-estudiante .dropdown, #panel-estudiante .avatar-dropdown {
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 10px 0;
+            display: none;
+            z-index: 10;
+        }
+        #panel-estudiante .dropdown a, #panel-estudiante .avatar-dropdown a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #333;
+            white-space: nowrap;
+        }
+        #panel-estudiante .dropdown a:hover, #panel-estudiante .avatar-dropdown a:hover {
+            background-color: #f1f1f1;
+        }
+        #panel-estudiante .dropdown { left: 10px; top: 60px; }
+        #panel-estudiante .avatar-dropdown { right: 20px; top: 60px; }
+        #panel-estudiante .content {
+            padding: 30px 20px;
+        }
+        #panel-estudiante table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 30px auto;
+            max-width: 1000px;
+        }
+        #panel-estudiante th, #panel-estudiante td {
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            text-align: center;
+        }
+        #panel-estudiante th {
+            background-color: #000;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        #panel-estudiante td { font-size: 14px; }
+        #panel-estudiante .welcome {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #0d47a1;
+            text-align: right;
+        }
+        @media (max-width: 768px) {
+            #panel-estudiante .title { font-size: 16px; }
+            #panel-estudiante th, #panel-estudiante td { font-size: 12px; }
+        }
+        .error-message {
+            color: #dc2626;
+            margin-bottom: 15px;
+            font-size: 14px;
+            background: #fee2e2;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #fecaca;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor principal para poder ocultarlo al mostrar el panel estudiante -->
+    <div class="container" id="main-container">
+        <h1 class="title">SIA</h1>
+        <div class="logo" onclick="openModal()">
+            <div class="logo-content">
+                <div class="logo-text">INSTITUCIÓN JOHN PASCAL</div>
+                <div class="logo-motto">INNOVACIÓN Y CIENCIA PARA EL FUTURO</div>
+                <div class="atom-symbol">
+                    <div class="atom-background"></div>
+                    <div class="atom-center"></div>
+                    <div class="electron-orbit orbit1"></div>
+                    <div class="electron-orbit orbit2"></div>
+                    <div class="electron-orbit orbit3"></div>
+                </div>
+                <div class="book-icon"></div>
+                <div class="green-landscape"></div>
+                <div class="year">2025</div>
+            </div>
+        </div>
+        <p class="subtitle">INSTITUTO TECNOLÓGICO<br>JOHN PASCAL</p>
+        <div class="roles-container" style="display: none;">
+            <div class="role-button" onclick="selectRole('estudiante')">
+                <div class="role-icon">👥</div>
+                <div class="role-title">Estudiante</div>
+            </div>
+            <div class="role-button" onclick="selectRole('docente')">
+                <div class="role-icon">👨‍🏫</div>
+                <div class="role-title">DOCENTE</div>
+            </div>
+            <div class="role-button" onclick="selectRole('jefe')">
+                <div class="role-icon">👨‍💼</div>
+                <div class="role-title">JEFE DE DEPARTAMENTO</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de roles -->
+    <div id="roleModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 30px; color: #1f2937;">Selecciona tu rol</h2>
+            <div class="modal-roles">
+                <div class="modal-role-button" onclick="selectRole('estudiante')">
+                    <div class="role-icon">👥</div>
+                    <div class="role-title">Estudiante</div>
+                </div>
+                <div class="modal-role-button" onclick="selectRole('docente')">
+                    <div class="role-icon">
+                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="25" width="60" height="40" fill="#2c3e50" stroke="#34495e" stroke-width="2" rx="3"/>
+                            <rect x="18" y="23" width="64" height="44" fill="none" stroke="#34495e" stroke-width="2" rx="4"/>
+                            <circle cx="50" cy="75" r="8" fill="#f4a261"/>
+                            <rect x="45" y="80" width="10" height="15" fill="#264653" rx="2"/>
+                            <rect x="35" y="82" width="12" height="3" fill="#264653" rx="1.5"/>
+                            <rect x="53" y="82" width="12" height="3" fill="#264653" rx="1.5"/>
+                            <line x1="33" y1="83" x2="25" y2="45" stroke="#8b4513" stroke-width="2"/>
+                            <circle cx="25" cy="45" r="1.5" fill="#8b4513"/>
+                        </svg>
+                    </div>
+                    <div class="role-title">DOCENTE</div>
+                </div>
+                <div class="modal-role-button" onclick="selectRole('jefe')">
+                    <div class="role-icon">👨‍💼</div>
+                    <div class="role-title">JEFE DE DEPARTAMENTO</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de login -->
+    <div id="loginScreen" class="login-screen">
+        <button class="back-button" onclick="backToModal()">← Regresar</button>
+        <div class="login-header">
+            <div class="login-header-logo">
+                <div style="font-size: 20px; color: #5B4FBF;">⚙️</div>
+            </div>
+            INSTITUTO TECNOLÓGICO JOHN PASCAL
+        </div>
+        <div class="login-content">
+            <div class="login-logo">
+                <div class="login-logo-content">
+                    <div class="logo-text">INSTITUCIÓN JOHN PASCAL</div>
+                    <div class="logo-motto">INNOVACIÓN Y CIENCIA PARA EL FUTURO</div>
+                    <div class="atom-symbol">
+                        <div class="atom-background"></div>
+                        <div class="atom-center"></div>
+                        <div class="electron-orbit orbit1"></div>
+                        <div class="electron-orbit orbit2"></div>
+                        <div class="electron-orbit orbit3"></div>
+                    </div>
+                    <div class="book-icon"></div>
+                    <div class="green-landscape"></div>
+                    <div class="year">2025</div>
+                </div>
+            </div>
+            <div class="login-form">
+                <h2 class="login-title">Iniciar Sesión</h2>
+                <div id="login-error" class="error-message" style="display:none;"></div>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="username">👤 Usuario</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">🔒 Contraseña</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="login-button">ACEPTAR</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panel de Estudiante (oculto por defecto, aparece tras login) -->
+    <div id="panel-estudiante">
+      <header>
+        <div class="logo">
+          <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
+        </div>
+        <div class="title">Ingeniería En Sistemas Computacionales</div>
+        <div class="avatar" onclick="toggleAvatarMenu()">
+          <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Avatar"/>
+        </div>
+        <!-- Menú lateral hamburguesa, cambia según la sección -->
+        <div class="dropdown" id="menuDropdown">
+          <!-- El contenido se actualiza dinámicamente según la sección -->
+        </div>
+        <!-- Menú avatar -->
+        <div class="avatar-dropdown" id="avatarDropdown">
+          <a href="#">🔐 Cambiar Contraseña</a>
+          <a href="#" onclick="cerrarSesion()">🚪 Cerrar Sesión</a>
+        </div>
+      </header>
+      <div class="content" id="panel-content">
+        <div class="welcome" id="student-welcome"></div>
+        <!-- INICIO por defecto -->
+        <div id="inicio-section">
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre del alumno</th>
+                <th>Curp</th>
+                <th>Número de control</th>
+                <th>carrera</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Correo personal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Leydi rubí santiago jimenez</td>
+                <td>LRSJ260602MVZTHRNA9</td>
+                <td>22230686</td>
+                <td>Sistemas computacionales</td>
+                <td>Coacotla, col. Tapa #3</td>
+                <td>9222345698</td>
+                <td>leydirubi@gmail.com</td>
+              </tr>
+            </tbody>
+          </table>
+          <table>
+            <thead>
+              <tr>
+                <th>Escuela de procedencia</th>
+                <th>Periodo de ingreso</th>
+                <th>Periodo actual o último</th>
+                <th>Situación</th>
+                <th>Períodos validados</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Bachillerato Francisco y Madero</td>
+                <td>2023</td>
+                <td>2025</td>
+                <td>VIGENTE</td>
+                <td>2023 - 2025</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- KARDEX sección -->
+        <div id="kardex-section" style="display:none;">
+          <h2 style="text-align:center; margin: 30px 0 20px 0; font-size:2em; letter-spacing:2px;">KARDEX</h2>
+          <h3 style="margin-bottom:18px;">SEMESTRES</h3>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px;">
+            <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+              <strong>PRIMER SEMESTRE</strong><br>
+              <span>Materias</span>
+            </div>
+            <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+              <strong>SEGUNDO SEMESTRE</strong><br>
+              <span>Materias</span>
+            </div>
+            <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+              <strong>TERCER SEMESTRE</strong><br>
+              <span>Materias</span>
+            </div>
+            <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+              <strong>CUARTO SEMESTRE</strong><br>
+              <span>Materias</span>
+            </div>
+            <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+              <strong>QUINTO SEMESTRE</strong><br>
+              <span>Materias</span>
+            </div>
+            <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+              <strong>SEXTO SEMESTRE</strong><br>
+              <span>Materias</span>
+            </div>
+            <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+              <strong>SEPTIMO SEMESTRE</strong><br>
+              <span>Materias</span>
+            </div>
+            <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+              <strong>OCTAVO SEMESTRE</strong><br>
+              <span>Materias</span>
+            </div>
+            <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+              <strong>NOVENO SEMESTRE</strong><br>
+              <span>Materias</span>
+            </div>
+          </div>
+        </div>
+        <!-- HORARIO sección -->
+        <div id="horario-section" style="display:none;">
+          <h2 style="text-align:center; margin: 30px 0 20px 0; font-size:2em; letter-spacing:2px;">HORARIO</h2>
+          <div style="text-align:center; color:#888;">Aquí puedes mostrar el horario del estudiante.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal KARDEX -->
+    <div id="kardex-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:2000; align-items:center; justify-content:center;">
+      <div style="background:#fff; border-radius:16px; max-width:900px; width:95vw; padding:32px 24px; box-shadow:0 8px 32px rgba(0,0,0,0.2); position:relative;">
+        <button onclick="cerrarKardexModal()" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:2em; color:#333; cursor:pointer;">&times;</button>
+        <h2 style="text-align:center; margin-bottom:24px; font-size:2em;">KARDEX</h2>
+        <h3 style="margin-bottom:18px;">SEMESTRES</h3>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px;">
+          <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+            <strong>PRIMER SEMESTRE</strong><br>
+            <span>Materias</span>
+          </div>
+          <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+            <strong>SEGUNDO SEMESTRE</strong><br>
+            <span>Materias</span>
+          </div>
+          <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+            <strong>TERCER SEMESTRE</strong><br>
+            <span>Materias</span>
+          </div>
+          <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+            <strong>CUARTO SEMESTRE</strong><br>
+            <span>Materias</span>
+          </div>
+          <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+            <strong>QUINTO SEMESTRE</strong><br>
+            <span>Materias</span>
+          </div>
+          <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+            <strong>SEXTO SEMESTRE</strong><br>
+            <span>Materias</span>
+          </div>
+          <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+            <strong>SEPTIMO SEMESTRE</strong><br>
+            <span>Materias</span>
+          </div>
+          <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+            <strong>OCTAVO SEMESTRE</strong><br>
+            <span>Materias</span>
+          </div>
+          <div style="border:1px solid #bdbdbd; border-radius:10px; padding:24px;">
+            <strong>NOVENO SEMESTRE</strong><br>
+            <span>Materias</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Cambiar Contraseña -->
+    <div id="cambiar-contrasena-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.25); z-index:3000; align-items:center; justify-content:center;">
+      <div style="background:#fff; border-radius:12px; max-width:350px; width:90vw; padding:32px 24px; box-shadow:0 8px 32px rgba(0,0,0,0.2); position:relative; display:flex; flex-direction:column; gap:18px;">
+        <h3 style="margin:0 0 10px 0; font-size:1.2em; text-align:center;">CONTRASEÑA NUEVA</h3>
+        <input id="nueva-contrasena" type="password" placeholder="Nueva contraseña" style="width:100%;padding:10px 12px;border-radius:6px;border:1px solid #ccc;font-size:1em;">
+        <div id="contrasena-error" style="color:#c00; font-size:0.95em; display:none;"></div>
+        <div style="display:flex; gap:10px; justify-content:flex-end;">
+          <button onclick="cerrarModalContrasena()" style="padding:8px 18px; border-radius:6px; border:none; background:#eee; cursor:pointer;">Cancelar</button>
+          <button onclick="aceptarCambioContrasena()" style="padding:8px 18px; border-radius:6px; border:none; background:#0d47a1; color:#fff; font-weight:bold; cursor:pointer;">Aceptar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal PRIMER SEMESTRE -->
+    <div id="modal-primer-semestre" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.08); z-index:4000; align-items:flex-start; justify-content:center;">
+      <div style="background:#fff; border-radius:0 0 8px 8px; max-width:900px; width:95vw; margin-top:60px; padding:0 0 32px 0; box-shadow:0 8px 32px rgba(0,0,0,0.12); position:relative;">
+        <div style="background:#1a23a1; color:#fff; border-radius:8px 8px 0 0; padding:24px 0 12px 0; text-align:center; position:relative;">
+          <button onclick="toggleMenuModal('menu-primer-semestre')" style="position:absolute; top:18px; left:18px; background:none; border:none; font-size:1.5em; color:#fff; cursor:pointer;">☰</button>
+          <h2 style="margin:0; font-size:2.2em; font-family:serif; font-weight:bold; color:#ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.9); letter-spacing: 1px;">Ingeniería En Sistemas Computacionales</h2>
+          <button onclick="descargarSemestrePDF('primer')" style="position:absolute; top:18px; right:60px; background:rgba(255,255,255,0.2); border:1px solid #fff; font-size:1em; color:#fff; cursor:pointer; padding:5px 10px; border-radius:5px;">📄</button>
+          <button onclick="cerrarModalPrimerSemestre()" style="position:absolute; top:18px; right:18px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+        </div>
+        <!-- Menú hamburguesa para primer semestre -->
+        <div id="menu-primer-semestre" style="position:absolute; top:60px; left:18px; background:#fff; border:1px solid #ccc; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.2); display:none; z-index:10;">
+          <a href="#" onclick="mostrarHorarioModal('primer'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333; border-bottom:1px solid #eee;">🕒 HORARIO</a>
+          <a href="#" onclick="mostrarTemarioModal('primer'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333;">📚 TEMARIO</a>
+        </div>
+        <div style="padding:32px 24px 0 24px;">
+          <table style="border-collapse:collapse; width:100%; margin:0 auto; max-width:900px;">
+            <thead>
+              <tr style="background:#111;">
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CLAVE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CRE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">MATERIA</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CALIFICACIONES</th>
+              </tr>
+            </thead>
+            <tbody style="background:#fff;">
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">ACF0901</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">CALCULO DIFERENCIAL</td>
+                <td style="padding:10px 15px; text-align:center;">70</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">AED1285</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">FUNDAMENTOS DE PROGRAMACION</td>
+                <td style="padding:10px 15px; text-align:center;">70</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">ACA0907</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">TALLER DE ETICA</td>
+                <td style="padding:10px 15px; text-align:center;">78</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">AEF1041</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">MATEMATICAS DISCRETAS</td>
+                <td style="padding:10px 15px; text-align:center;">70</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCH1024</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">TALLER ADMINISTRACION</td>
+                <td style="padding:10px 15px; text-align:center;">90</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">ACC0906</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">FUNDAMENTOS DE INVESTIGACION</td>
+                <td style="padding:10px 15px; text-align:center;">100</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal SEGUNDO SEMESTRE -->
+    <div id="modal-segundo-semestre" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.08); z-index:4000; align-items:flex-start; justify-content:center;">
+      <div style="background:#fff; border-radius:0 0 8px 8px; max-width:900px; width:95vw; margin-top:60px; padding:0 0 32px 0; box-shadow:0 8px 32px rgba(0,0,0,0.12); position:relative;">
+        <div style="background:#1a23a1; color:#fff; border-radius:8px 8px 0 0; padding:24px 0 12px 0; text-align:center; position:relative;">
+          <button onclick="toggleMenuModal('menu-segundo-semestre')" style="position:absolute; top:18px; left:18px; background:none; border:none; font-size:1.5em; color:#fff; cursor:pointer;">☰</button>
+          <h2 style="margin:0; font-size:2.2em; font-family:serif; font-weight:bold; color:#ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.9); letter-spacing: 1px;">Ingeniería En Sistemas Computacionales</h2>
+          <button onclick="descargarSemestrePDF('segundo')" style="position:absolute; top:18px; right:60px; background:rgba(255,255,255,0.2); border:1px solid #fff; font-size:1em; color:#fff; cursor:pointer; padding:5px 10px; border-radius:5px;">📄</button>
+          <button onclick="cerrarModalSegundoSemestre()" style="position:absolute; top:18px; right:18px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+        </div>
+        <!-- Menú hamburguesa para segundo semestre -->
+        <div id="menu-segundo-semestre" style="position:absolute; top:60px; left:18px; background:#fff; border:1px solid #ccc; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.2); display:none; z-index:10;">
+          <a href="#" onclick="mostrarHorarioModal('segundo'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333; border-bottom:1px solid #eee;">🕒 HORARIO</a>
+          <a href="#" onclick="mostrarTemarioModal('segundo'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333;">📚 TEMARIO</a>
+        </div>
+        <div style="padding:32px 24px 0 24px;">
+          <table style="border-collapse:collapse; width:100%; margin:0 auto; max-width:900px;">
+            <thead>
+              <tr style="background:#111;">
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CLAVE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CRE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">MATERIA</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CALIFICACIONES</th>
+              </tr>
+            </thead>
+            <tbody style="background:#fff;">
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">ACF0902</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">CALCULO INTEGRAL</td>
+                <td style="padding:10px 15px; text-align:center;">70</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">AED1286</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">PROGRAMACION ORIENTADA A OBJETOS</td>
+                <td style="padding:10px 15px; text-align:center;">70</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">AEC1008</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">CONTABILIDAD FINANCIERAS</td>
+                <td style="padding:10px 15px; text-align:center;">78</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">AEC1058</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">QUIMICA</td>
+                <td style="padding:10px 15px; text-align:center;">70</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">ACF0903</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">ALGEBRA LINEAL</td>
+                <td style="padding:10px 15px; text-align:center;">90</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">AEF1052</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">PROBABILIDAD Y ESTADISTICA</td>
+                <td style="padding:10px 15px; text-align:center;">100</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal TERCER SEMESTRE -->
+    <div id="modal-tercer-semestre" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.08); z-index:4000; align-items:flex-start; justify-content:center;">
+      <div style="background:#fff; border-radius:0 0 8px 8px; max-width:900px; width:95vw; margin-top:60px; padding:0 0 32px 0; box-shadow:0 8px 32px rgba(0,0,0,0.12); position:relative;">
+        <div style="background:#1a23a1; color:#fff; border-radius:8px 8px 0 0; padding:24px 0 12px 0; text-align:center; position:relative;">
+          <button onclick="toggleMenuModal('menu-tercer-semestre')" style="position:absolute; top:18px; left:18px; background:none; border:none; font-size:1.5em; color:#fff; cursor:pointer;">☰</button>
+          <h2 style="margin:0; font-size:2.2em; font-family:serif; font-weight:bold; color:#ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.9); letter-spacing: 1px;">Ingeniería En Sistemas Computacionales</h2>
+          <button onclick="descargarSemestrePDF('tercer')" style="position:absolute; top:18px; right:60px; background:rgba(255,255,255,0.2); border:1px solid #fff; font-size:1em; color:#fff; cursor:pointer; padding:5px 10px; border-radius:5px;">📄</button>
+          <button onclick="cerrarModalTercerSemestre()" style="position:absolute; top:18px; right:18px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+        </div>
+        <!-- Menú hamburguesa para tercer semestre -->
+        <div id="menu-tercer-semestre" style="position:absolute; top:60px; left:18px; background:#fff; border:1px solid #ccc; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.2); display:none; z-index:10;">
+          <a href="#" onclick="mostrarHorarioModal('tercer'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333; border-bottom:1px solid #eee;">🕒 HORARIO</a>
+          <a href="#" onclick="mostrarTemarioModal('tercer'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333;">📚 TEMARIO</a>
+        </div>
+        <div style="padding:32px 24px 0 24px;">
+          <table style="border-collapse:collapse; width:100%; margin:0 auto; max-width:900px;">
+            <thead>
+              <tr style="background:#111;">
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CLAVE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CRE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">MATERIA</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CALIFICACIONES</th>
+              </tr>
+            </thead>
+            <tbody style="background:#fff;">
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">CF0904</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">CALCULO VECTORIAL</td>
+                <td style="padding:10px 15px; text-align:center;">68</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">AED1026</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">ESTRUCTURA DE DATOS</td>
+                <td style="padding:10px 15px; text-align:center;">70</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCC1005</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">CULTURA EMPRESARIAL</td>
+                <td style="padding:10px 15px; text-align:center;">78</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCC1013</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">INVESTIGACION DE OPERACIONES</td>
+                <td style="padding:10px 15px; text-align:center;">70</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">ACD0908</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">DESARROLLO SUSTENTABLE</td>
+                <td style="padding:10px 15px; text-align:center;">90</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCF1006</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">FISICA GENERAL</td>
+                <td style="padding:10px 15px; text-align:center;">100</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal CUARTO SEMESTRE -->
+    <div id="modal-cuarto-semestre" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.08); z-index:4000; align-items:flex-start; justify-content:center;">
+      <div style="background:#fff; border-radius:0 0 8px 8px; max-width:900px; width:95vw; margin-top:60px; padding:0 0 32px 0; box-shadow:0 8px 32px rgba(0,0,0,0.12); position:relative;">
+        <div style="background:#1a23a1; color:#fff; border-radius:8px 8px 0 0; padding:24px 0 12px 0; text-align:center; position:relative;">
+          <button onclick="toggleMenuModal('menu-cuarto-semestre')" style="position:absolute; top:18px; left:18px; background:none; border:none; font-size:1.5em; color:#fff; cursor:pointer;">☰</button>
+          <h2 style="margin:0; font-size:2.2em; font-family:serif; font-weight:bold; color:#ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.9); letter-spacing: 1px;">Ingeniería En Sistemas Computacionales</h2>
+          <button onclick="descargarSemestrePDF('cuarto')" style="position:absolute; top:18px; right:60px; background:rgba(255,255,255,0.2); border:1px solid #fff; font-size:1em; color:#fff; cursor:pointer; padding:5px 10px; border-radius:5px;">📄</button>
+          <button onclick="cerrarModalCuartoSemestre()" style="position:absolute; top:18px; right:18px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+        </div>
+        <!-- Menú hamburguesa para cuarto semestre -->
+        <div id="menu-cuarto-semestre" style="position:absolute; top:60px; left:18px; background:#fff; border:1px solid #ccc; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.2); display:none; z-index:10;">
+          <a href="#" onclick="mostrarHorarioModal('cuarto'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333; border-bottom:1px solid #eee;">🕒 HORARIO</a>
+          <a href="#" onclick="mostrarTemarioModal('cuarto'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333;">📚 TEMARIO</a>
+        </div>
+        <div style="padding:32px 24px 0 24px;">
+          <table style="border-collapse:collapse; width:100%; margin:0 auto; max-width:900px;">
+            <thead>
+              <tr style="background:#111;">
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CLAVE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CRE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">MATERIA</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CALIFICACIONES</th>
+              </tr>
+            </thead>
+            <tbody style="background:#fff;">
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">ACF0905</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">ECUACIONES DIFERENCIALES</td>
+                <td style="padding:10px 15px; text-align:center;"></td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCC1017</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">MÉTODOS NUMÉRICOS</td>
+                <td style="padding:10px 15px; text-align:center;">70</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCD1027</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">TÓPICOS AVANZADOS DE PROGRAMACIÓN</td>
+                <td style="padding:10px 15px; text-align:center;">78</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">AEF1031</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">FUNDAMENTOS DE BASE DE DATOS</td>
+                <td style="padding:10px 15px; text-align:center;">70</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCD1022</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">SIMULACION</td>
+                <td style="padding:10px 15px; text-align:center;">90</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCD1018</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">PRINCIPIOS ELÉCTRICOS Y APLICACIONES</td>
+                <td style="padding:10px 15px; text-align:center;">100</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal QUINTO SEMESTRE -->
+    <div id="modal-quinto-semestre" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.08); z-index:4000; align-items:flex-start; justify-content:center;">
+      <div style="background:#fff; border-radius:0 0 8px 8px; max-width:900px; width:95vw; margin-top:60px; padding:0 0 32px 0; box-shadow:0 8px 32px rgba(0,0,0,0.12); position:relative;">
+        <div style="background:#1a23a1; color:#fff; border-radius:8px 8px 0 0; padding:24px 0 12px 0; text-align:center; position:relative;">
+          <button onclick="toggleMenuModal('menu-quinto-semestre')" style="position:absolute; top:18px; left:18px; background:none; border:none; font-size:1.5em; color:#fff; cursor:pointer;">☰</button>
+          <h2 style="margin:0; font-size:2.2em; font-family:serif; font-weight:bold; color:#ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.9); letter-spacing: 1px;">Ingeniería En Sistemas Computacionales</h2>
+          <button onclick="descargarSemestrePDF('quinto')" style="position:absolute; top:18px; right:60px; background:rgba(255,255,255,0.2); border:1px solid #fff; font-size:1em; color:#fff; cursor:pointer; padding:5px 10px; border-radius:5px;">📄</button>
+          <button onclick="cerrarModalQuintoSemestre()" style="position:absolute; top:18px; right:18px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+        </div>
+        <!-- Menú hamburguesa para quinto semestre -->
+        <div id="menu-quinto-semestre" style="position:absolute; top:60px; left:18px; background:#fff; border:1px solid #ccc; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.2); display:none; z-index:10;">
+          <a href="#" onclick="mostrarHorarioModal('quinto'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333; border-bottom:1px solid #eee;">🕒 HORARIO</a>
+          <a href="#" onclick="mostrarTemarioModal('quinto'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333;">📚 TEMARIO</a>
+        </div>
+        <div style="padding:32px 24px 0 24px;">
+          <table style="border-collapse:collapse; width:100%; margin:0 auto; max-width:900px;">
+            <thead>
+              <tr style="background:#111;">
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CLAVE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CRE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">MATERIA</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CALIFICACIONES</th>
+              </tr>
+            </thead>
+            <tbody style="background:#fff;">
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCC1010</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">GRAFICACIÓN</td>
+                <td style="padding:10px 15px; text-align:center;">78</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">AEC1034</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">FUNDAMENTOS DE TELECOMUNICACIONES</td>
+                <td style="padding:10px 15px; text-align:center;">80</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">AEC1061</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">SISTEMAS OPERATIVOS</td>
+                <td style="padding:10px 15px; text-align:center;">88</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCA1025</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">TALLER DE BASE DE DATOS</td>
+                <td style="padding:10px 15px; text-align:center;">90</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCC1007</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">FUNDAMENTOS DE INGENIERIA EN SOFTWARE</td>
+                <td style="padding:10px 15px; text-align:center;">92</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCD1003</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">ARQUITECTURA DE COMPUTADORAS</td>
+                <td style="padding:10px 15px; text-align:center;">89</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal SEXTO SEMESTRE -->
+    <div id="modal-sexto-semestre" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.08); z-index:4000; align-items:flex-start; justify-content:center;">
+      <div style="background:#fff; border-radius:0 0 8px 8px; max-width:900px; width:95vw; margin-top:60px; padding:0 0 32px 0; box-shadow:0 8px 32px rgba(0,0,0,0.12); position:relative;">
+        <div style="background:#1a23a1; color:#fff; border-radius:8px 8px 0 0; padding:24px 0 12px 0; text-align:center; position:relative;">
+          <button onclick="toggleMenuModal('menu-sexto-semestre')" style="position:absolute; top:18px; left:18px; background:none; border:none; font-size:1.5em; color:#fff; cursor:pointer;">☰</button>
+          <h2 style="margin:0; font-size:2.2em; font-family:serif; font-weight:bold; color:#ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.9); letter-spacing: 1px;">Ingeniería En Sistemas Computacionales</h2>
+          <button onclick="descargarSemestrePDF('sexto')" style="position:absolute; top:18px; right:60px; background:rgba(255,255,255,0.2); border:1px solid #fff; font-size:1em; color:#fff; cursor:pointer; padding:5px 10px; border-radius:5px;">📄</button>
+          <button onclick="cerrarModalSextoSemestre()" style="position:absolute; top:18px; right:18px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+        </div>
+        <!-- Menú hamburguesa para sexto semestre -->
+        <div id="menu-sexto-semestre" style="position:absolute; top:60px; left:18px; background:#fff; border:1px solid #ccc; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.2); display:none; z-index:10;">
+          <a href="#" onclick="mostrarHorarioModal('sexto'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333; border-bottom:1px solid #eee;">🕒 HORARIO</a>
+          <a href="#" onclick="mostrarTemarioModal('sexto'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333;">📚 TEMARIO</a>
+        </div>
+        <div style="padding:32px 24px 0 24px;">
+          <table style="border-collapse:collapse; width:100%; margin:0 auto; max-width:900px;">
+            <thead>
+              <tr style="background:#111;">
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CLAVE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CRE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">MATERIA</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CALIFICACIONES</th>
+              </tr>
+            </thead>
+            <tbody style="background:#fff;">
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCD1015</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">LENGUAJE Y AUTÓMATAS 1</td>
+                <td style="padding:10px 15px; text-align:center;">85</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCD1021</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">REDES DE COMPUTADORAS</td>
+                <td style="padding:10px 15px; text-align:center;">92</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCA1026</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">TALLER DE SISTEMAS OPERATIVOS</td>
+                <td style="padding:10px 15px; text-align:center;">80</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCB1001</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">ADMINISTRACION DE BASE DE DATOS</td>
+                <td style="padding:10px 15px; text-align:center;">80</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCD1011</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">INGENIERA EN SOFTWARE</td>
+                <td style="padding:10px 15px; text-align:center;">90</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCC1014</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">LENGUAJE DE INTERFAZ</td>
+                <td style="padding:10px 15px; text-align:center;">100</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal SÉPTIMO SEMESTRE -->
+    <div id="modal-septimo-semestre" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.08); z-index:4000; align-items:flex-start; justify-content:center;">
+      <div style="background:#fff; border-radius:0 0 8px 8px; max-width:900px; width:95vw; margin-top:60px; padding:0 0 32px 0; box-shadow:0 8px 32px rgba(0,0,0,0.12); position:relative;">
+        <div style="background:#1a23a1; color:#fff; border-radius:8px 8px 0 0; padding:24px 0 12px 0; text-align:center; position:relative;">
+          <button onclick="toggleMenuModal('menu-septimo-semestre')" style="position:absolute; top:18px; left:18px; background:none; border:none; font-size:1.5em; color:#fff; cursor:pointer;">☰</button>
+          <h2 style="margin:0; font-size:2.2em; font-family:serif; font-weight:bold; color:#ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.9); letter-spacing: 1px;">Ingeniería En Sistemas Computacionales</h2>
+          <button onclick="descargarSemestrePDF('septimo')" style="position:absolute; top:18px; right:60px; background:rgba(255,255,255,0.2); border:1px solid #fff; font-size:1em; color:#fff; cursor:pointer; padding:5px 10px; border-radius:5px;">📄</button>
+          <button onclick="cerrarModalSeptimoSemestre()" style="position:absolute; top:18px; right:18px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+        </div>
+        <!-- Menú hamburguesa para séptimo semestre -->
+        <div id="menu-septimo-semestre" style="position:absolute; top:60px; left:18px; background:#fff; border:1px solid #ccc; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.2); display:none; z-index:10;">
+          <a href="#" onclick="mostrarHorarioModal('septimo'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333; border-bottom:1px solid #eee;">🕒 HORARIO</a>
+          <a href="#" onclick="mostrarTemarioModal('septimo'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333;">📚 TEMARIO</a>
+        </div>
+        <div style="padding:32px 24px 0 24px;">
+          <table style="border-collapse:collapse; width:100%; margin:0 auto; max-width:900px;">
+            <thead>
+              <tr style="background:#111;">
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CLAVE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CRE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">MATERIA</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CALIFICACIONES</th>
+              </tr>
+            </thead>
+            <tbody style="background:#fff;">
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCD1016</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">LENGUAJE Y AUTOMATAS 2</td>
+                <td style="padding:10px 15px; text-align:center;">89</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCD1004</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">CERD</td>
+                <td style="padding:10px 15px; text-align:center;">70</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">ACA0909</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">TALLER DE INVESTIGACION 1</td>
+                <td style="padding:10px 15px; text-align:center;">80</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">AEF</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">MATEMATICAS DISCRETAS</td>
+                <td style="padding:10px 15px; text-align:center;">70</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCG1009</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">GESTION DE PROYECTOS DE SOFTWARE</td>
+                <td style="padding:10px 15px; text-align:center;">70</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCC1023</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">SISTEMAS PROGRAMABLES</td>
+                <td style="padding:10px 15px; text-align:center;">100</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">ISE9</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">ACTIVIDADES COMPLEMENTARIAS</td>
+                <td style="padding:10px 15px; text-align:center;"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal OCTAVO SEMESTRE -->
+    <div id="modal-octavo-semestre" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.08); z-index:4000; align-items:flex-start; justify-content:center;">
+      <div style="background:#fff; border-radius:0 0 8px 8px; max-width:900px; width:95vw; margin-top:60px; padding:0 0 32px 0; box-shadow:0 8px 32px rgba(0,0,0,0.12); position:relative;">
+        <div style="background:#1a23a1; color:#fff; border-radius:8px 8px 0 0; padding:24px 0 12px 0; text-align:center; position:relative;">
+          <button onclick="toggleMenuModal('menu-octavo-semestre')" style="position:absolute; top:18px; left:18px; background:none; border:none; font-size:1.5em; color:#fff; cursor:pointer;">☰</button>
+          <h2 style="margin:0; font-size:2.2em; font-family:serif; font-weight:bold; color:#ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.9); letter-spacing: 1px;">Ingeniería En Sistemas Computacionales</h2>
+          <button onclick="descargarSemestrePDF('octavo')" style="position:absolute; top:18px; right:60px; background:rgba(255,255,255,0.2); border:1px solid #fff; font-size:1em; color:#fff; cursor:pointer; padding:5px 10px; border-radius:5px;">📄</button>
+          <button onclick="cerrarModalOctavoSemestre()" style="position:absolute; top:18px; right:18px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+        </div>
+        <!-- Menú hamburguesa para octavo semestre -->
+        <div id="menu-octavo-semestre" style="position:absolute; top:60px; left:18px; background:#fff; border:1px solid #ccc; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.2); display:none; z-index:10;">
+          <a href="#" onclick="mostrarHorarioModal('octavo'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333; border-bottom:1px solid #eee;">🕒 HORARIO</a>
+          <a href="#" onclick="mostrarTemarioModal('octavo'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333;">📚 TEMARIO</a>
+        </div>
+        <div style="padding:32px 24px 0 24px;">
+          <table style="border-collapse:collapse; width:100%; margin:0 auto; max-width:900px;">
+            <thead>
+              <tr style="background:#111;">
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CLAVE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CRE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">MATERIA</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CALIFICACIONES</th>
+              </tr>
+            </thead>
+            <tbody style="background:#fff;">
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCC1019</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">PROGRAMACION LOGICA Y FUNCIONAL</td>
+                <td style="padding:10px 15px; text-align:center;">70</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCA1002</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">ADM.REDES</td>
+                <td style="padding:10px 15px; text-align:center;">70</td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">ACA0907</td>
+                <td style="padding:10px 15px; text-align:center;">7</td>
+                <td style="padding:10px 15px; text-align:center;">CONM Y EN RED DA 2</td>
+                <td style="padding:10px 15px; text-align:center;"></td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">AEB1055</td>
+                <td style="padding:10px 15px; text-align:center;">5</td>
+                <td style="padding:10px 15px; text-align:center;">PROGRAMACION WEB</td>
+                <td style="padding:10px 15px; text-align:center;"></td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">ACA0910</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">TALLER DE INVESTIGACION 2</td>
+                <td style="padding:10px 15px; text-align:center;"></td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">ISD9</td>
+                <td style="padding:10px 15px; text-align:center;">10</td>
+                <td style="padding:10px 15px; text-align:center;">SERVICIO SOCIAL</td>
+                <td style="padding:10px 15px; text-align:center;"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal NOVENO SEMESTRE -->
+    <div id="modal-noveno-semestre" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.08); z-index:4000; align-items:flex-start; justify-content:center;">
+      <div style="background:#fff; border-radius:0 0 8px 8px; max-width:900px; width:95vw; margin-top:60px; padding:0 0 32px 0; box-shadow:0 8px 32px rgba(0,0,0,0.12); position:relative;">
+        <div style="background:#1a23a1; color:#fff; border-radius:8px 8px 0 0; padding:24px 0 12px 0; text-align:center; position:relative;">
+          <button onclick="toggleMenuModal('menu-noveno-semestre')" style="position:absolute; top:18px; left:18px; background:none; border:none; font-size:1.5em; color:#fff; cursor:pointer;">☰</button>
+          <h2 style="margin:0; font-size:2.2em; font-family:serif; font-weight:bold; color:#ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.9); letter-spacing: 1px;">Ingeniería En Sistemas Computacionales</h2>
+          <button onclick="descargarSemestrePDF('noveno')" style="position:absolute; top:18px; right:60px; background:rgba(255,255,255,0.2); border:1px solid #fff; font-size:1em; color:#fff; cursor:pointer; padding:5px 10px; border-radius:5px;">📄</button>
+          <button onclick="cerrarModalNovenoSemestre()" style="position:absolute; top:18px; right:18px; background:none; border:none; font-size:2em; color:#fff; cursor:pointer;">&times;</button>
+        </div>
+        <!-- Menú hamburguesa para noveno semestre -->
+        <div id="menu-noveno-semestre" style="position:absolute; top:60px; left:18px; background:#fff; border:1px solid #ccc; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.2); display:none; z-index:10;">
+          <a href="#" onclick="mostrarHorarioModal('noveno'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333; border-bottom:1px solid #eee;">🕒 HORARIO</a>
+          <a href="#" onclick="mostrarTemarioModal('noveno'); return false;" style="display:block; padding:12px 20px; text-decoration:none; color:#333;">📚 TEMARIO</a>
+        </div>
+        <div style="padding:32px 24px 0 24px;">
+          <table style="border-collapse:collapse; width:100%; margin:0 auto; max-width:900px;">
+            <thead>
+              <tr style="background:#111;">
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CLAVE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CRE</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">MATERIA</th>
+                <th style="color:#fff; padding:10px 15px; text-align:center;">CALIFICACIONES</th>
+              </tr>
+            </thead>
+            <tbody style="background:#fff;">
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">CF0901</td>
+                <td style="padding:10px 15px; text-align:center;">6</td>
+                <td style="padding:10px 15px; text-align:center;">TÓPICOS DE REDES</td>
+                <td style="padding:10px 15px; text-align:center;"></td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">AED1285</td>
+                <td style="padding:10px 15px; text-align:center;">6</td>
+                <td style="padding:10px 15px; text-align:center;">REDES DE VOZ</td>
+                <td style="padding:10px 15px; text-align:center;"></td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">SCC1012</td>
+                <td style="padding:10px 15px; text-align:center;">4</td>
+                <td style="padding:10px 15px; text-align:center;">IA (INTELIGENCIA ARTIFICIAL)</td>
+                <td style="padding:10px 15px; text-align:center;"></td>
+              </tr>
+              <tr style="border-bottom:1px solid #eee;">
+                <td style="padding:10px 15px; text-align:center;">ISC9</td>
+                <td style="padding:10px 15px; text-align:center;">10</td>
+                <td style="padding:10px 15px; text-align:center;">RESIDENCIA</td>
+                <td style="padding:10px 15px; text-align:center;"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        // Variables globales para el usuario y rol
+        let currentUser = "";
+        let currentRole = "";
+
+        function openModal() {
+            document.getElementById('roleModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('roleModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function selectRole(role) {
+            currentRole = role;
+            closeModal();
+            showLoginScreen(role);
+        }
+
+        function showLoginScreen(role) {
+            document.getElementById('loginScreen').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            // Puedes usar la variable 'role' para personalizar la pantalla según el rol seleccionado
+            console.log('Rol seleccionado:', role);
+        }
+
+        function backToModal() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('roleModal').style.display = 'block';
+        }
+
+        // INTEGRACIÓN: Mostrar panel estudiante tras login
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorDiv = document.getElementById('login-error');
+            if (!username || !password) {
+                errorDiv.textContent = "Por favor, completa todos los campos.";
+                errorDiv.style.display = "block";
+                return;
+            }
+            errorDiv.style.display = "none";
+            currentUser = username;
+            // Oculta login y pantalla principal
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('main-container').style.display = 'none';
+            // Muestra panel estudiante
+            document.getElementById('panel-estudiante').style.display = 'block';
+            document.body.style.overflow = 'auto';
+            // Personaliza bienvenida
+            document.getElementById('student-welcome').textContent = `Bienvenido, ${currentUser}!`;
+            // Muestra INICIO por defecto
+            mostrarInicio();
+        }
+
+        // Mostrar secciones dinámicamente y actualizar menú hamburguesa
+        function mostrarInicio() {
+          document.getElementById('inicio-section').style.display = '';
+          document.getElementById('kardex-section').style.display = 'none';
+          document.getElementById('horario-section').style.display = 'none';
+          // Solo mostrar "KARDEX" en el menú hamburguesa
+          document.getElementById('menuDropdown').innerHTML = `
+            <a href="#" onclick="mostrarKardex(); return false;">📄 KARDEX</a>
+          `;
+          cerrarMenus();
+        }
+        function mostrarKardex() {
+          document.getElementById('inicio-section').style.display = 'none';
+          document.getElementById('kardex-section').style.display = '';
+          document.getElementById('horario-section').style.display = 'none';
+          // Mostrar solo INICIO y KARDEX en el menú hamburguesa
+          document.getElementById('menuDropdown').innerHTML = `
+            <a href="#" onclick="mostrarInicio(); return false;">🏠 INICIO</a>
+            <a href="#" onclick="mostrarKardex(); return false;">📄 KARDEX</a>
+          `;
+          cerrarMenus();
+        }
+        function mostrarHorario() {
+          document.getElementById('inicio-section').style.display = 'none';
+          document.getElementById('kardex-section').style.display = 'none';
+          document.getElementById('horario-section').style.display = '';
+          // Mostrar solo INICIO y KARDEX en el menú hamburguesa
+          document.getElementById('menuDropdown').innerHTML = `
+            <a href="#" onclick="mostrarInicio(); return false;">🏠 INICIO</a>
+            <a href="#" onclick="mostrarKardex(); return false;">📄 KARDEX</a>
+          `;
+          cerrarMenus();
+        }
+        // Inicializa el menú correctamente al cargar el panel
+        document.addEventListener('DOMContentLoaded', function() {
+          if (document.getElementById('panel-estudiante').style.display !== 'none') {
+            mostrarInicio();
+          }
+        });
+
+        function cerrarMenus() {
+          document.getElementById("menuDropdown").style.display = "none";
+          document.getElementById("avatarDropdown").style.display = "none";
+        }
+
+        function toggleMenu() {
+          const menu = document.getElementById("menuDropdown");
+          menu.style.display = menu.style.display === "block" ? "none" : "block";
+          document.getElementById("avatarDropdown").style.display = "none";
+        }
+        function toggleAvatarMenu() {
+          const avatarMenu = document.getElementById("avatarDropdown");
+          avatarMenu.style.display = avatarMenu.style.display === "block" ? "none" : "block";
+          document.getElementById("menuDropdown").style.display = "none";
+        }
+
+        window.onclick = function(event) {
+          const modal = document.getElementById('roleModal');
+          if (event.target === modal) {
+            closeModal();
+          }
+          if (!event.target.closest('.avatar') && !event.target.closest('.avatar-dropdown')) {
+            const avatarDropdown = document.getElementById("avatarDropdown");
+            if(avatarDropdown) avatarDropdown.style.display = "none";
+          }
+          if (!event.target.closest('.menu-btn') && !event.target.closest('.dropdown')) {
+            const menuDropdown = document.getElementById("menuDropdown");
+            if(menuDropdown) menuDropdown.style.display = "none";
+          }
+        };
+
+        // Cerrar modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Cerrar sesión (regresa al inicio)
+        function cerrarSesion() {
+            document.getElementById('panel-estudiante').style.display = 'none';
+            document.getElementById('main-container').style.display = 'block';
+            openModal();
+            currentUser = "";
+            currentRole = "";
+            document.getElementById('student-welcome').textContent = "";
+            document.getElementById('username').value = "";
+            document.getElementById('password').value = "";
+            mostrarInicio();
+        }
+
+        // Mostrar modal de cambiar contraseña
+        document.querySelectorAll('.avatar-dropdown a')[0].onclick = function(e) {
+          e.preventDefault();
+          document.getElementById('cambiar-contrasena-modal').style.display = 'flex';
+          document.getElementById('nueva-contrasena').value = '';
+          document.getElementById('contrasena-error').style.display = 'none';
+          cerrarMenus();
+        };
+
+        // Cerrar modal
+        function cerrarModalContrasena() {
+          document.getElementById('cambiar-contrasena-modal').style.display = 'none';
+          document.getElementById('nueva-contrasena').value = '';
+          document.getElementById('contrasena-error').style.display = 'none';
+        }
+
+        // Aceptar cambio de contraseña
+        function aceptarCambioContrasena() {
+          const nueva = document.getElementById('nueva-contrasena').value.trim();
+          const errorDiv = document.getElementById('contrasena-error');
+          if (!nueva) {
+            errorDiv.textContent = "Ingresa una nueva contraseña.";
+            errorDiv.style.display = "block";
+            return;
+          }
+          // Aquí podrías agregar lógica para guardar la contraseña
+          cerrarModalContrasena();
+          // Mostrar mensaje y luego regresar al login
+          setTimeout(function() {
+            alert("Contraseña cambiada exitosamente. Por favor inicia sesión de nuevo.");
+            cerrarSesion(); // Te regresa al login
+          }, 100);
+        }
+
+        // --- Lógica refactorizada para los modales de semestre ---
+
+        function openSemesterModal(semesterId) {
+            const modal = document.getElementById(semesterId);
+            if (!modal) return;
+
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+
+            // Colorea las filas según la calificación
+            const rows = modal.querySelectorAll('tbody tr');
+            rows.forEach(function(row) {
+                const gradeCell = row.querySelector('td:last-child');
+                if (gradeCell) {
+                    const gradeText = gradeCell.textContent.trim();
+                    if (gradeText === "") {
+                        row.style.background = ''; // Sin calificacion
+                        row.style.color = '';
+                    } else {
+                        const grade = parseInt(gradeText, 10);
+                        if (!isNaN(grade)) {
+                            if (grade >= 70) {
+                                row.style.background = '#d4edda'; // Aprobado (verde)
+                                row.style.color = '#155724';
+                            } else {
+                                row.style.background = '#f8d7da'; // Reprobado (rojo)
+                                row.style.color = '#721c24';
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function closeSemesterModal(semesterId) {
+            const modal = document.getElementById(semesterId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const semesterMap = {
+                'primer': 'modal-primer-semestre',
+                'segundo': 'modal-segundo-semestre',
+                'tercer': 'modal-tercer-semestre',
+                'cuarto': 'modal-cuarto-semestre',
+                'quinto': 'modal-quinto-semestre',
+                'sexto': 'modal-sexto-semestre',
+                'septimo': 'modal-septimo-semestre',
+                'octavo': 'modal-octavo-semestre',
+                'noveno': 'modal-noveno-semestre'
+            };
+
+            // Asignar eventos de click a los elementos del kardex
+            const semesterElements = document.querySelectorAll('#kardex-section strong');
+            semesterElements.forEach((element, index) => {
+                const semesterKey = Object.keys(semesterMap)[index];
+                const modalId = semesterMap[semesterKey];
+                if (modalId) {
+                    element.style.cursor = "pointer";
+                    element.onclick = () => openSemesterModal(modalId);
+
+                    // Asignar eventos para cerrar el modal
+                    const modal = document.getElementById(modalId);
+                    if(modal) {
+                        // Clic en el botón de cerrar
+                        const closeButton = modal.querySelector('button[onclick*="cerrarModal"]');
+                        if(closeButton) closeButton.onclick = () => closeSemesterModal(modalId);
+
+                        // Clic fuera del contenido del modal
+                        modal.onclick = (e) => {
+                            if (e.target === modal) closeSemesterModal(modalId);
+                        };
+                    }
+                }
+            });
+
+            // Evento global para la tecla Escape
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    for (const modalId of Object.values(semesterMap)) {
+                        closeSemesterModal(modalId);
+                    }
+                }
+            });
+        });
+
+// Funciones para manejar los menús hamburguesa de los modales
+function toggleMenuModal(menuId) {
+  const menu = document.getElementById(menuId);
+  if (menu) {
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  }
+}
+
+// Datos de materias por semestre con horarios
+const materiasHorarios = {
+  primer: [
+    { materia: 'CALCULO DIFERENCIAL', horario: 'Lunes-Martes-Viernes 7:00-8:00', aula: 'A101', profesor: 'Dr. García', calificacion: 70, turno: 'Matutino' },
+    { materia: 'FUNDAMENTOS DE PROGRAMACION', horario: 'Lunes-Martes-Viernes 8:00-9:30', aula: 'Lab1', profesor: 'Ing. López', calificacion: 70, turno: 'Matutino' },
+    { materia: 'TALLER DE ETICA', horario: 'Jueves-Viernes 11:00-12:00', aula: 'A102', profesor: 'Lic. Martínez', calificacion: 78, turno: 'Matutino' },
+    { materia: 'MATEMATICAS DISCRETAS', horario: 'Martes-Jueves 16:00-18:00', aula: 'A103', profesor: 'Dr. Rodríguez', calificacion: 70, turno: 'Vespertino' },
+    { materia: 'TALLER ADMINISTRACION', horario: 'Lunes-Martes 18:00-19:30', aula: 'A104', profesor: 'Ing. Torres', calificacion: 80, turno: 'Vespertino' },
+    { materia: 'FUNDAMENTOS DE INVESTIGACION', horario: 'Jueves-Viernes 18:00-19:30', aula: 'A105', profesor: 'Dr. Hernández', calificacion: 90, turno: 'Vespertino' }
+  ],
+  segundo: [
+    { materia: 'CALCULO INTEGRAL', horario: 'Lunes-Viernes 7:00-8:00', aula: 'A201', profesor: 'Dr. García', calificacion: 70, turno: 'Matutino' },
+    { materia: 'PROGRAMACION ORIENTADA A OBJETOS', horario: 'Lunes-Viernes 8:00-9:00', aula: 'Lab2', profesor: 'Ing. López', calificacion: 70, turno: 'Matutino' },
+    { materia: 'CONTABILIDAD FINANCIERAS', horario: 'Lunes-Viernes 9:00-10:00', aula: 'A202', profesor: 'Lic. Martínez', calificacion: 78, turno: 'Matutino' },
+    { materia: 'QUIMICA', horario: 'Lunes-Viernes 10:00-11:00', aula: 'Lab3', profesor: 'Dr. Rodríguez', calificacion: 70, turno: 'Matutino' },
+    { materia: 'ALGEBRA LINEAL', horario: 'Lunes-Viernes 11:00-12:00', aula: 'A203', profesor: 'Dr. Hernández', calificacion: 90, turno: 'Matutino' },
+    { materia: 'PROBABILIDAD Y ESTADISTICA', horario: 'Lunes-Viernes 12:00-13:00', aula: 'A204', profesor: 'Dr. Jiménez', calificacion: 100, turno: 'Vespertino' }
+  ],
+  tercer: [
+    { materia: 'CALCULO VECTORIAL', horario: 'Lunes-Viernes 7:00-8:00', aula: 'A301', profesor: 'Dr. García', calificacion: 68, turno: 'Matutino' },
+    { materia: 'ESTRUCTURA DE DATOS', horario: 'Lunes-Viernes 8:00-9:00', aula: 'Lab4', profesor: 'Ing. López', calificacion: 70, turno: 'Matutino' },
+    { materia: 'CULTURA EMPRESARIAL', horario: 'Lunes-Viernes 9:00-10:00', aula: 'A302', profesor: 'Lic. Martínez', calificacion: 78, turno: 'Matutino' },
+    { materia: 'INVESTIGACION DE OPERACIONES', horario: 'Lunes-Viernes 10:00-11:00', aula: 'A303', profesor: 'Dr. Rodríguez', calificacion: 70, turno: 'Matutino' },
+    { materia: 'DESARROLLO SUSTENTABLE', horario: 'Lunes-Viernes 11:00-12:00', aula: 'A304', profesor: 'Dr. Hernández', calificacion: 90, turno: 'Matutino' },
+    { materia: 'FISICA GENERAL', horario: 'Lunes-Viernes 12:00-13:00', aula: 'Lab5', profesor: 'Dr. Jiménez', calificacion: 100, turno: 'Vespertino' }
+  ],
+  cuarto: [
+    { materia: 'ECUACIONES DIFERENCIALES', horario: 'Lunes-Viernes 7:00-8:00', aula: 'A401', profesor: 'Dr. García', calificacion: null, turno: 'Matutino' },
+    { materia: 'MÉTODOS NUMÉRICOS', horario: 'Lunes-Viernes 8:00-9:00', aula: 'Lab6', profesor: 'Ing. López', calificacion: 70, turno: 'Matutino' },
+    { materia: 'TÓPICOS AVANZADOS DE PROGRAMACIÓN', horario: 'Lunes-Viernes 9:00-10:00', aula: 'Lab7', profesor: 'Lic. Martínez', calificacion: 78, turno: 'Matutino' },
+    { materia: 'FUNDAMENTOS DE BASE DE DATOS', horario: 'Lunes-Viernes 10:00-11:00', aula: 'Lab8', profesor: 'Dr. Rodríguez', calificacion: 70, turno: 'Matutino' },
+    { materia: 'SIMULACION', horario: 'Lunes-Viernes 11:00-12:00', aula: 'A402', profesor: 'Dr. Hernández', calificacion: 90, turno: 'Matutino' },
+    { materia: 'PRINCIPIOS ELÉCTRICOS Y APLICACIONES', horario: 'Lunes-Viernes 12:00-13:00', aula: 'Lab9', profesor: 'Dr. Jiménez', calificacion: 100, turno: 'Vespertino' },
+    // Materia reprobada del tercer semestre en turno vespertino
+    { materia: 'CALCULO VECTORIAL (RECURSAMIENTO)', horario: 'Lunes-Viernes 14:00-15:00', aula: 'A301V', profesor: 'Dr. García', calificacion: 70, esRecursamiento: true, semestreOriginal: 'tercer', turno: 'Vespertino' }
+  ],
+  quinto: [
+    { materia: 'GRAFICACIÓN', horario: 'Lunes-Viernes 7:00-8:00',  aula: 'Lab10', profesor: 'Ing. Gómez', calificacion: 78, turno: 'Matutino' },
+    { materia: 'FUNDAMENTOS DE TELECOMUNICACIONES', horario: 'Lunes-Viernes 8:00-9:00', aula: 'A501', profesor: 'Dr. Pérez', calificacion: 80, turno: 'Matutino' },
+    { materia: 'SISTEMAS OPERATIVOS', horario: 'Lunes-Viernes 9:00-10:00', aula: 'Lab11', profesor: 'Ing. Morales', calificacion: 88, turno: 'Matutino' },
+    { materia: 'TALLER DE BASE DE DATOS', horario: 'Lunes-Viernes 10:00-11:00', aula: 'Lab12', profesor: 'Dr. Vázquez', calificacion: 90, turno: 'Matutino' },
+    { materia: 'FUNDAMENTOS DE INGENIERIA EN SOFTWARE', horario: 'Lunes-Viernes 11:00-12:00', aula: 'A502', profesor: 'Ing. Torres', calificacion: 92, turno: 'Matutino' },
+    { materia: 'ARQUITECTURA DE COMPUTADORAS', horario: 'Lunes-Viernes 12:00-13:00', aula: 'Lab13', profesor: 'Dr. Ruiz', calificacion: 89, turno: 'Vespertino' },
+  ],
+  sexto: [
+    { materia: 'LENGUAJE Y AUTÓMATAS 1', horario: 'Lunes-Viernes 7:00-8:00', aula: 'A601', profesor: 'Dr. Silva', calificacion: 85, turno: 'Matutino' },
+    { materia: 'REDES DE COMPUTADORAS', horario: 'Lunes-Viernes 8:00-9:00', aula: 'Lab14', profesor: 'Ing. Castro', calificacion: 92, turno: 'Matutino' },
+    { materia: 'TALLER DE SISTEMAS OPERATIVOS', horario: 'Lunes-Viernes 9:00-10:00', aula: 'Lab15', profesor: 'Ing. Morales', calificacion: 80, turno: 'Matutino' },
+    { materia: 'ADMINISTRACION DE BASE DE DATOS', horario: 'Lunes-Viernes 10:00-11:00', aula: 'Lab16', profesor: 'Dr. Vázquez', calificacion: 80, turno: 'Matutino' },
+    { materia: 'INGENIERA EN SOFTWARE', horario: 'Lunes-Viernes 11:00-12:00', aula: 'A602', profesor: 'Ing. Torres', calificacion: 90, turno: 'Matutino' },
+    { materia: 'LENGUAJE DE INTERFAZ', horario: 'Lunes-Viernes 12:00-13:00', aula: 'Lab17', profesor: 'Dr. Ruiz', calificacion: 100, turno: 'Vespertino' }
+  ],
+  septimo: [
+    { materia: 'LENGUAJE Y AUTOMATAS 2', horario: 'Lunes-Viernes 7:00-8:00', aula: 'A701', profesor: 'Dr. Silva', calificacion: 89, turno: 'Matutino' },
+    { materia: 'CERD', horario: 'Lunes-Viernes 8:00-9:00', aula: 'Lab18', profesor: 'Ing. Castro', calificacion: 70, turno: 'Matutino' },
+    { materia: 'TALLER DE INVESTIGACION 1', horario: 'Lunes-Viernes 9:00-10:00', aula: 'A702', profesor: 'Dr. Mendoza', calificacion: 80, turno: 'Matutino' },
+    { materia: 'DIS REDES EN CAPA FÍSICA', horario: 'Lunes-Viernes 10:00-11:00', aula: 'A703', profesor: 'Dr. Rodríguez', calificacion: 70, turno: 'Matutino' },
+    { materia: 'GESTION DE PROYECTOS DE SOFTWARE', horario: 'Lunes-Viernes 11:00-12:00', aula: 'A704', profesor: 'Ing. Torres', calificacion: 70, turno: 'Matutino' },
+    { materia: 'SISTEMAS PROGRAMABLES', horario: 'Lunes-Viernes 12:00-13:00', aula: 'Lab19', profesor: 'Dr. Ruiz', calificacion: 100, turno: 'Vespertino' },
+    { materia: 'ACTIVIDADES COMPLEMENTARIAS' , horario: 'Flexible', aula: 'Varios', profesor: 'Coordinación', calificacion: 100, turno: 'Flexible' }
+  ],
+  octavo: [
+    { materia: 'PROGRAMACION LOGICA Y FUNCIONAL', horario: 'Lunes-Viernes 7:00-8:00', aula: 'Lab20', profesor: 'Dr. Silva', calificacion: 70, turno: 'Matutino' },
+    { materia: 'ADM.REDES', horario: 'Lunes-Viernes 8:00-9:00', aula: 'Lab21', profesor: 'Ing. Castro', calificacion: 70, turno: 'Matutino' },
+    { materia: 'CONM Y EN RED DA 2', horario: 'Lunes-Viernes 9:00-10:00', aula: 'Lab22', profesor: 'Dr. Mendoza', calificacion: null, turno: 'Matutino' },
+    { materia: 'PROGRAMACION WEB', horario: 'Lunes-Viernes 10:00-11:00', aula: 'Lab23', profesor: 'Ing. Ramírez', calificacion: null, turno: 'Matutino' },
+    { materia: 'TALLER DE INVESTIGACION 2', horario: 'Lunes-Viernes 11:00-12:00', aula: 'A801', profesor: 'Dr. Mendoza', calificacion: null, turno: 'Matutino' },
+    { materia: 'SERVICIO SOCIAL', horario: 'Flexible', aula: 'Externo', profesor: 'Coordinación', calificacion: null, turno: 'Flexible' }
+  ],
+  noveno: [
+    { materia: 'TÓPICOS DE REDES', horario: 'Lunes-Viernes 7:00-8:00', aula: 'Lab24', profesor: 'Ing. Castro', calificacion: null, turno: 'Matutino' },
+    { materia: 'REDES DE VOZ', horario: 'Lunes-Viernes 8:00-9:00', aula: 'Lab25', profesor: 'Dr. Silva', calificacion: null, turno: 'Matutino' },
+    { materia: 'IA (INTELIGENCIA ARTIFICIAL)', horario: 'Lunes-Viernes 9:00-10:00', aula: 'Lab26', profesor: 'Dr. Hernández', calificacion: null, turno: 'Matutino' },
+    { materia: 'RESIDENCIA', horario: 'Flexible', aula: 'Externo', profesor: 'Coordinación', calificacion: null, turno: 'Flexible' }
+  ]
+};
+
+// Función para mostrar el modal de horario
+function mostrarHorarioModal(semestre) {
+  const materias = materiasHorarios[semestre];
+  if (!materias) return;
+
+  let tablaHTML = `
+    <div id="modal-horario" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 5000; display: flex; justify-content: center; align-items: center;">
+      <div style="background: white; padding: 20px; border-radius: 10px; max-width: 90%; max-height: 90%; overflow-y: auto;">
+        <h2>Horarios - ${semestre.charAt(0).toUpperCase() + semestre.slice(1)} Semestre</h2>
+        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+          <thead>
+            <tr style="background-color: #f0f0f0;">
+              <th style="border: 1px solid #ddd; padding: 10px; text-align: left;">Materia</th>
+              <th style="border: 1px solid #ddd; padding: 10px; text-align: left;">Horario</th>
+              <th style="border: 1px solid #ddd; padding: 10px; text-align: left;">Aula</th>
+              <th style="border: 1px solid #ddd; padding: 10px; text-align: left;">Profesor</th>
+              <th style="border: 1px solid #ddd; padding: 10px; text-align: left;">Turno</th>
+            </tr>
+          </thead>
+          <tbody>
+  `;
+
+  materias.forEach(materia => {
+    const esRecursamiento = materia.esRecursamiento ? ' (Recursamiento)' : '';
+    tablaHTML += `
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px;">${materia.materia}${esRecursamiento}</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">${materia.horario || 'No asignado'}</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">${materia.aula || 'No asignada'}</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">${materia.profesor || 'No asignado'}</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">${materia.turno || 'No asignado'}</td>
+      </tr>
+    `;
+  });
+
+  tablaHTML += `
+          </tbody>
+        </table>
+        <button onclick="descargarHorarioPDF()" style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-right: 10px;">📄 Descargar PDF</button>
+        <button onclick="cerrarHorarioModal()" style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Cerrar</button>
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', tablaHTML);
+
+  // Cerrar modal al hacer clic fuera
+  document.getElementById('modal-horario').onclick = function(e) {
+    if (e.target === this) {
+      cerrarHorarioModal();
+    }
+  };
+
+  // Cerrar modal con tecla Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      cerrarHorarioModal();
+    }
+  });
+}
+
+// Función para cerrar el modal de horario
+function cerrarHorarioModal() {
+  const modal = document.getElementById('modal-horario');
+  if (modal) {
+    modal.remove();
+  }
+}
+
+// Datos de temarios por semestre con descripciones
+const temariosPorSemestre = {
+  primer: [
+    { materia: 'CALCULO DIFERENCIAL', temario: ['Límites y continuidad', 'Derivadas', 'Aplicaciones de la derivada', 'Integrales indefinidas'], descripcion: 'Materia fundamental que introduce los conceptos básicos del cálculo diferencial, incluyendo límites, derivadas y sus aplicaciones en problemas de optimización y análisis de funciones.' },
+    { materia: 'FUNDAMENTOS DE PROGRAMACION', temario: ['Algoritmos básicos', 'Estructuras de control', 'Funciones', 'Arreglos'], descripcion: 'Curso introductorio a la programación que enseña los conceptos fundamentales de algoritmos, estructuras de datos básicas y metodologías de programación estructurada.' },
+    { materia: 'TALLER DE ETICA', temario: ['Ética profesional', 'Valores morales', 'Responsabilidad social', 'Códigos de ética'], descripcion: 'Materia que desarrolla la conciencia ética y moral del estudiante, enfocándose en la responsabilidad profesional y social en el ámbito de la ingeniería.' },
+    { materia: 'MATEMATICAS DISCRETAS', temario: ['Lógica proposicional', 'Teoría de conjuntos', 'Relaciones', 'Grafos'], descripcion: 'Fundamentos matemáticos esenciales para la computación, incluyendo lógica, teoría de conjuntos, combinatoria y estructuras discretas.' },
+    { materia: 'TALLER ADMINISTRACION', temario: ['Proceso administrativo', 'Planeación', 'Organización', 'Control'], descripcion: 'Introducción a los principios básicos de administración y gestión, desarrollando habilidades gerenciales y de liderazgo.' },
+    { materia: 'FUNDAMENTOS DE INVESTIGACION', temario: ['Método científico', 'Tipos de investigación', 'Técnicas de investigación', 'Redacción científica'], descripcion: 'Metodología de la investigación científica, técnicas de recolección y análisis de datos, y redacción de documentos académicos.' }
+  ],
+  segundo: [
+    { materia: 'CALCULO INTEGRAL', temario: ['Integrales definidas', 'Técnicas de integración', 'Aplicaciones de la integral', 'Series infinitas'], descripcion: 'Continuación del cálculo diferencial, enfocándose en la integración y sus aplicaciones en el cálculo de áreas, volúmenes y resolución de problemas físicos.' },
+    { materia: 'PROGRAMACION ORIENTADA A OBJETOS', temario: ['Clases y objetos', 'Herencia', 'Polimorfismo', 'Encapsulamiento'], descripcion: 'Paradigma de programación basado en objetos que encapsulan datos y comportamientos, fundamental para el desarrollo de software moderno.' },
+    { materia: 'CONTABILIDAD FINANCIERAS', temario: ['Estados financieros', 'Balance general', 'Estado de resultados', 'Análisis financiero'], descripcion: 'Fundamentos de contabilidad y análisis financiero necesarios para la gestión económica de proyectos y empresas tecnológicas.' },
+    { materia: 'QUIMICA', temario: ['Estructura atómica', 'Enlaces químicos', 'Reacciones químicas', 'Estequiometría'], descripcion: 'Principios básicos de química aplicados a la ingeniería, incluyendo propiedades de materiales y procesos químicos relevantes.' },
+    { materia: 'ALGEBRA LINEAL', temario: ['Matrices', 'Determinantes', 'Sistemas de ecuaciones', 'Espacios vectoriales'], descripcion: 'Matemáticas fundamentales para computación gráfica, análisis de datos y algoritmos de optimización en sistemas computacionales.' },
+    { materia: 'PROBABILIDAD Y ESTADISTICA', temario: ['Probabilidad básica', 'Distribuciones', 'Estadística descriptiva', 'Inferencia estadística'], descripcion: 'Herramientas estadísticas esenciales para el análisis de datos, modelado de sistemas y toma de decisiones basada en datos.' }
+  ],
+  tercer: [
+    { materia: 'CALCULO VECTORIAL', temario: ['Vectores en el espacio', 'Funciones vectoriales', 'Campos vectoriales', 'Integrales de línea'], descripcion: 'Extensión del cálculo a múltiples dimensiones, fundamental para física computacional, gráficos 3D y análisis de sistemas complejos.' },
+    { materia: 'ESTRUCTURA DE DATOS', temario: ['Listas enlazadas', 'Pilas y colas', 'Árboles', 'Grafos'], descripcion: 'Organización eficiente de datos en memoria, algoritmos de búsqueda y ordenamiento, base fundamental para la programación avanzada.' },
+    { materia: 'CULTURA EMPRESARIAL', temario: ['Cultura organizacional', 'Liderazgo', 'Trabajo en equipo', 'Comunicación empresarial'], descripcion: 'Desarrollo de habilidades blandas y competencias empresariales necesarias para el trabajo en equipos multidisciplinarios.' },
+    { materia: 'INVESTIGACION DE OPERACIONES', temario: ['Programación lineal', 'Método simplex', 'Teoría de colas', 'Simulación'], descripcion: 'Técnicas matemáticas para optimización de recursos y toma de decisiones en sistemas complejos y procesos industriales.' },
+    { materia: 'DESARROLLO SUSTENTABLE', temario: ['Sustentabilidad ambiental', 'Desarrollo sostenible', 'Recursos naturales', 'Impacto ambiental'], descripcion: 'Conciencia ambiental y desarrollo de tecnologías sostenibles, considerando el impacto ecológico de los sistemas computacionales.' },
+    { materia: 'FISICA GENERAL', temario: ['Mecánica', 'Termodinámica', 'Ondas', 'Electricidad y magnetismo'], descripcion: 'Principios físicos fundamentales aplicados a la ingeniería, base para comprender el funcionamiento de dispositivos electrónicos.' }
+  ],
+  cuarto: [
+    { materia: 'ECUACIONES DIFERENCIALES', temario: ['Ecuaciones de primer orden', 'Ecuaciones lineales', 'Sistemas de ecuaciones', 'Transformada de Laplace'], descripcion: 'Herramientas matemáticas para modelar sistemas dinámicos, esenciales en control automático y análisis de sistemas.' },
+    { materia: 'MÉTODOS NUMÉRICOS', temario: ['Solución de ecuaciones', 'Interpolación', 'Integración numérica', 'Ecuaciones diferenciales numéricas'], descripcion: 'Algoritmos computacionales para resolver problemas matemáticos complejos que no tienen solución analítica.' },
+    { materia: 'TÓPICOS AVANZADOS DE PROGRAMACIÓN', temario: ['Programación avanzada', 'Patrones de diseño', 'Frameworks', 'Optimización de código'], descripcion: 'Técnicas avanzadas de programación, arquitecturas de software y mejores prácticas para desarrollo de aplicaciones complejas.' },
+    { materia: 'FUNDAMENTOS DE BASE DE DATOS', temario: ['Modelo relacional', 'SQL básico', 'Normalización', 'Diseño de bases de datos'], descripcion: 'Diseño y gestión de bases de datos relacionales, fundamentos para el manejo eficiente de información en sistemas.' },
+    { materia: 'SIMULACION', temario: ['Modelos de simulación', 'Números aleatorios', 'Simulación de eventos', 'Análisis de resultados'], descripcion: 'Técnicas de modelado y simulación de sistemas complejos para análisis de comportamiento y toma de decisiones.' },
+    { materia: 'PRINCIPIOS ELÉCTRICOS Y APLICACIONES', temario: ['Circuitos eléctricos', 'Ley de Ohm', 'Circuitos AC/DC', 'Electrónica básica'], descripcion: 'Fundamentos de electricidad y electrónica aplicados a sistemas computacionales y dispositivos digitales.' }
+  ],
+  quinto: [
+    { materia: 'GRAFICACIÓN', temario: ['Gráficos 2D', 'Transformaciones geométricas', 'Gráficos 3D', 'Algoritmos gráficos'], descripcion: 'Técnicas de computación gráfica para crear interfaces visuales, videojuegos y aplicaciones multimedia.' },
+    { materia: 'FUNDAMENTOS DE TELECOMUNICACIONES', temario: ['Señales y sistemas', 'Modulación', 'Transmisión de datos', 'Protocolos de comunicación'], descripcion: 'Principios de comunicación digital y transmisión de datos, base para redes y sistemas distribuidos.' },
+    { materia: 'SISTEMAS OPERATIVOS', temario: ['Procesos', 'Memoria', 'Sistemas de archivos', 'Concurrencia'], descripcion: 'Funcionamiento interno de sistemas operativos, gestión de recursos y programación de sistemas.' },
+    { materia: 'TALLER DE BASE DE DATOS', temario: ['SQL avanzado', 'Procedimientos almacenados', 'Triggers', 'Optimización de consultas'], descripcion: 'Implementación práctica de bases de datos, optimización de consultas y desarrollo de aplicaciones de datos.' },
+    { materia: 'FUNDAMENTOS DE INGENIERIA EN SOFTWARE', temario: ['Ciclo de vida del software', 'Metodologías ágiles', 'Análisis de requerimientos', 'Diseño de software'], descripcion: 'Metodologías y procesos para el desarrollo profesional de software, desde la concepción hasta el mantenimiento.' },
+    { materia: 'ARQUITECTURA DE COMPUTADORAS', temario: ['Organización del procesador', 'Memoria', 'Entrada/Salida', 'Arquitecturas paralelas'], descripcion: 'Diseño y funcionamiento interno de computadoras, desde procesadores hasta sistemas paralelos y distribuidos.' }
+  ],
+  sexto: [
+    { materia: 'LENGUAJE Y AUTÓMATAS 1', temario: ['Gramáticas formales', 'Autómatas finitos', 'Expresiones regulares', 'Lenguajes regulares'], descripcion: 'Teoría de la computación y lenguajes formales, fundamentos teóricos para compiladores y procesamiento de lenguajes.' },
+    { materia: 'REDES DE COMPUTADORAS', temario: ['Modelo OSI', 'Protocolos TCP/IP', 'Enrutamiento', 'Seguridad en redes'], descripcion: 'Arquitectura y protocolos de redes de computadoras, desde redes locales hasta internet y comunicaciones globales.' },
+    { materia: 'TALLER DE SISTEMAS OPERATIVOS', temario: ['Administración de procesos', 'Gestión de memoria', 'Sistemas de archivos', 'Shell scripting'], descripcion: 'Práctica en administración de sistemas operativos, automatización y programación de scripts del sistema.' },
+    { materia: 'ADMINISTRACION DE BASE DE DATOS', temario: ['Administración de SGBD', 'Backup y recovery', 'Seguridad', 'Tuning de performance'], descripcion: 'Administración profesional de sistemas de bases de datos, incluyendo seguridad, respaldos y optimización.' },
+    { materia: 'INGENIERA EN SOFTWARE', temario: ['Ingeniería de requerimientos', 'Arquitectura de software', 'Pruebas de software', 'Mantenimiento'], descripcion: 'Procesos avanzados de ingeniería de software, arquitecturas escalables y metodologías de desarrollo profesional.' },
+    { materia: 'LENGUAJE DE INTERFAZ', temario: ['Lenguaje ensamblador', 'Arquitectura del procesador', 'Programación de bajo nivel', 'Interfaz hardware-software'], descripcion: 'Programación a nivel de máquina y interfaz entre hardware y software, optimización de código de bajo nivel.' }
+  ],
+  septimo: [
+    { materia: 'LENGUAJE Y AUTOMATAS 2', temario: ['Autómatas de pila', 'Gramáticas libres de contexto', 'Máquinas de Turing', 'Complejidad computacional'], descripcion: 'Teoría avanzada de la computación, complejidad algorítmica y fundamentos teóricos de la computabilidad.' },
+    { materia: 'CERD', temario: ['Conmutación', 'Enrutamiento', 'Protocolos de red', 'Diseño de redes'], descripcion: 'Conmutación y enrutamiento en redes de datos, diseño de topologías de red y protocolos avanzados.' },
+    { materia: 'TALLER DE INVESTIGACION 1', temario: ['Metodología de investigación', 'Protocolo de investigación', 'Marco teórico', 'Estado del arte'], descripcion: 'Desarrollo de habilidades de investigación científica y tecnológica, preparación para proyectos de titulación.' },
+    { materia: 'DIS REDES EN CAPA FÍSICA', temario: ['Medios de transmisión', 'Codificación de señales', 'Multiplexación', 'Estándares físicos'], descripcion: 'Diseño de la capa física de redes, medios de transmisión y estándares de comunicación de datos.' },
+    { materia: 'GESTION DE PROYECTOS DE SOFTWARE', temario: ['Gestión de proyectos', 'Planificación', 'Control de calidad', 'Gestión de riesgos'], descripcion: 'Metodologías de gestión de proyectos de software, planificación, control de recursos y gestión de equipos.' },
+    { materia: 'SISTEMAS PROGRAMABLES', temario: ['Microcontroladores', 'Programación embebida', 'Interfaces', 'Sistemas en tiempo real'], descripcion: 'Programación de sistemas embebidos, microcontroladores y desarrollo de sistemas de tiempo real.' }
+  ],
+  octavo: [
+    { materia: 'PROGRAMACION LOGICA Y FUNCIONAL', temario: ['Programación lógica', 'Prolog', 'Programación funcional', 'Haskell'], descripcion: 'Paradigmas alternativos de programación: lógica y funcional, ampliando las herramientas de desarrollo de software.' },
+    { materia: 'ADM.REDES', temario: ['Administración de redes', 'Monitoreo', 'Configuración de equipos', 'Troubleshooting'], descripcion: 'Administración práctica de redes empresariales, configuración de equipos y resolución de problemas de conectividad.' },
+    { materia: 'CONM Y EN RED DA 2', temario: ['Conmutación avanzada', 'VLANs', 'Spanning Tree', 'Protocolos de enrutamiento'], descripcion: 'Técnicas avanzadas de conmutación y enrutamiento, configuración de redes empresariales complejas.' },
+    { materia: 'PROGRAMACION WEB', temario: ['HTML/CSS', 'JavaScript', 'Frameworks web', 'Bases de datos web'], descripcion: 'Desarrollo de aplicaciones web modernas, desde interfaces de usuario hasta sistemas web completos.' },
+    { materia: 'TALLER DE INVESTIGACION 2', temario: ['Desarrollo de investigación', 'Análisis de datos', 'Resultados', 'Conclusiones'], descripcion: 'Continuación del proyecto de investigación, análisis de resultados y preparación de documentos científicos.' },
+    { materia: 'SERVICIO SOCIAL', temario: ['Proyecto social', 'Aplicación de conocimientos', 'Servicio a la comunidad', 'Reporte final'], descripcion: 'Aplicación de conocimientos técnicos en proyectos de beneficio social y comunitario.' }
+  ],
+  noveno: [
+    { materia: 'TÓPICOS DE REDES', temario: ['Redes avanzadas', 'SDN', 'Cloud networking', 'IoT'], descripcion: 'Tecnologías emergentes en redes: redes definidas por software, computación en la nube e Internet de las Cosas.' },
+    { materia: 'REDES DE VOZ', temario: ['VoIP', 'Telefonía IP', 'Protocolos de voz', 'Calidad de servicio'], descripcion: 'Sistemas de comunicación de voz sobre IP, telefonía digital y protocolos de comunicación multimedia.' },
+    { materia: 'IA (INTELIGENCIA ARTIFICIAL)', temario: ['Algoritmos de IA', 'Machine Learning', 'Redes neuronales', 'Aplicaciones de IA'], descripcion: 'Fundamentos de inteligencia artificial, aprendizaje automático y aplicaciones en sistemas computacionales.' },
+    { materia: 'RESIDENCIA', temario: ['Proyecto profesional', 'Aplicación práctica', 'Desarrollo en empresa', 'Reporte técnico'], descripcion: 'Proyecto profesional desarrollado en empresa o institución, aplicando conocimientos en un entorno real de trabajo.' }
+  ]
+};
+
+// Función para mostrar el modal de temario
+function mostrarTemarioModal(semestre) {
+  const temarios = temariosPorSemestre[semestre];
+  if (!temarios) return;
+
+  let contenidoHTML = `
+    <div id="modal-temario" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 5000; display: flex; justify-content: center; align-items: center;">
+      <div style="background: white; padding: 20px; border-radius: 10px; max-width: 90%; max-height: 90%; overflow-y: auto;">
+        <div id="temario-lista">
+          <h2>Temarios - ${semestre.charAt(0).toUpperCase() + semestre.slice(1)} Semestre</h2>
+          <div style="margin: 20px 0;">
+  `;
+
+  temarios.forEach((materia, index) => {
+    contenidoHTML += `
+      <div onclick="mostrarDetalleMateria('${semestre}', ${index})" style="margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; padding: 15px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#f8f9fa'; this.style.borderColor='#007bff'" onmouseout="this.style.backgroundColor='white'; this.style.borderColor='#ddd'">
+        <h3 style="margin: 0; color: #333; font-size: 16px;">📚 ${materia.materia}</h3>
+        <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">Clic para ver detalles</p>
+      </div>
+    `;
+  });
+
+  contenidoHTML += `
+          </div>
+          <button onclick="descargarTemarioPDF('${semestre}')" style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-right: 10px;">📄 Descargar PDF</button>
+          <button onclick="cerrarTemarioModal()" style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Cerrar</button>
+        </div>
+        <div id="temario-detalle" style="display: none;"></div>
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', contenidoHTML);
+
+  // Cerrar modal al hacer clic fuera
+  document.getElementById('modal-temario').onclick = function(e) {
+    if (e.target === this) {
+      cerrarTemarioModal();
+    }
+  };
+
+  // Cerrar modal con tecla Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      cerrarTemarioModal();
+    }
+  });
+}
+
+// Función para mostrar detalle de una materia específica
+function mostrarDetalleMateria(semestre, indiceMateria) {
+  const materia = temariosPorSemestre[semestre][indiceMateria];
+  if (!materia) return;
+
+  const detalleDiv = document.getElementById('temario-detalle');
+  const listaDiv = document.getElementById('temario-lista');
+  
+  let detalleHTML = `
+    <button onclick="regresarATemarios()" style="background: #6c757d; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-bottom: 20px;">← Regresar</button>
+    <h2>${materia.materia}</h2>
+    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+      <h3 style="margin: 0 0 10px 0; color: #495057;">Descripción de la materia:</h3>
+      <p style="margin: 0; color: #6c757d; line-height: 1.6;">${materia.descripcion}</p>
+    </div>
+    <h3 style="color: #495057;">Temario:</h3>
+    <ul style="margin: 0; padding-left: 20px;">
+  `;
+  
+  materia.temario.forEach(tema => {
+    detalleHTML += `<li style="margin-bottom: 8px; color: #666; line-height: 1.4;">${tema}</li>`;
+  });
+  
+  detalleHTML += `
+    </ul>
+    <div style="margin-top: 30px;">
+      <button onclick="regresarATemarios()" style="background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-right: 10px;">← Regresar</button>
+      <button onclick="cerrarTemarioModal()" style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Cerrar</button>
+    </div>
+  `;
+  
+  detalleDiv.innerHTML = detalleHTML;
+  listaDiv.style.display = 'none';
+  detalleDiv.style.display = 'block';
+}
+
+// Función para regresar a la lista de temarios
+function regresarATemarios() {
+  const detalleDiv = document.getElementById('temario-detalle');
+  const listaDiv = document.getElementById('temario-lista');
+  
+  detalleDiv.style.display = 'none';
+  listaDiv.style.display = 'block';
+}
+
+// Función para cerrar el modal de temario
+function cerrarTemarioModal() {
+  const modal = document.getElementById('modal-temario');
+  if (modal) {
+    modal.remove();
+  }
+}
+
+// Función para descargar temario como PDF
+function descargarTemarioPDF(semestre) {
+  const modal = document.getElementById('modal-temario');
+  if (!modal) return;
+  
+  const contenido = modal.querySelector('div').innerHTML;
+  const ventanaPDF = window.open('', '_blank');
+  ventanaPDF.document.write(`
+    <html>
+      <head>
+        <title>Temario - ${semestre.charAt(0).toUpperCase() + semestre.slice(1)} Semestre</title>
+        <style>
+          body { font-family: Arial, sans-serif; margin: 20px; }
+          h2 { text-align: center; color: #333; margin-bottom: 30px; }
+          h3 { color: #333; margin: 20px 0 10px 0; }
+          ul { margin: 0 0 20px 20px; }
+          li { margin-bottom: 5px; color: #666; }
+          div { margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; padding: 15px; }
+          button { display: none; }
+          @media print { button { display: none !important; } }
+        </style>
+      </head>
+      <body>${contenido}</body>
+    </html>
+  `);
+  ventanaPDF.document.close();
+  setTimeout(() => {
+    ventanaPDF.print();
+  }, 500);
+}
+
+// Función para descargar horarios como PDF
+function descargarHorarioPDF() {
+  const modal = document.getElementById('modal-horario');
+  if (!modal) return;
+  
+  const contenido = modal.querySelector('div').innerHTML;
+  const ventanaPDF = window.open('', '_blank');
+  ventanaPDF.document.write(`
+    <html>
+      <head>
+        <title>Horario</title>
+        <style>
+          body { font-family: Arial, sans-serif; margin: 20px; }
+          table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+          th, td { border: 1px solid #000; padding: 8px; text-align: left; }
+          th { background-color: #f0f0f0; font-weight: bold; }
+          h2 { text-align: center; color: #333; }
+          button { display: none; }
+          @media print { button { display: none !important; } }
+        </style>
+      </head>
+      <body>${contenido}</body>
+    </html>
+  `);
+  ventanaPDF.document.close();
+  setTimeout(() => {
+    ventanaPDF.print();
+  }, 500);
+}
+
+// Función para descargar semestre como PDF
+function descargarSemestrePDF(semestre) {
+  const modalId = `modal-${semestre}-semestre`;
+  const modal = document.getElementById(modalId);
+  if (!modal) return;
+  
+  const tabla = modal.querySelector('table');
+  const titulo = modal.querySelector('h2').textContent;
+  
+  const ventanaPDF = window.open('', '_blank');
+  ventanaPDF.document.write(`
+    <html>
+      <head>
+        <title>${titulo}</title>
+        <style>
+          body { font-family: Arial, sans-serif; margin: 20px; }
+          table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+          th, td { border: 1px solid #000; padding: 8px; text-align: center; }
+          th { background-color: #f0f0f0; font-weight: bold; }
+          h1 { text-align: center; color: #333; margin-bottom: 30px; }
+          .header { text-align: center; margin-bottom: 20px; }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <h1>${titulo}</h1>
+          <h2>${semestre.charAt(0).toUpperCase() + semestre.slice(1)} Semestre</h2>
+        </div>
+        ${tabla.outerHTML}
+      </body>
+    </html>
+  `);
+  ventanaPDF.document.close();
+  setTimeout(() => {
+    ventanaPDF.print();
+  }, 500);
+}
+    </script>
+</body>
+</html>
